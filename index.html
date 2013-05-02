@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!--[if lt IE 9]><script src="html5.js"></script><![endif]-->
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="untile.js"></script>
+    <link rel="stylesheet" type="text/css" href="untile.css">
+    <style>
+      #untile {
+        /* border: 1px solid red; /* */
+        width: 100%;
+        height: 480px;
+        display: inline-block;
+        margin: 0;
+        overflow: hidden;
+      }
+      #untile .tile {
+        display: inline-block;
+        width: 240px;
+        height: 240px;
+        background-color: white;
+      }
+
+      /* buttons */
+      #untile .untile-prev, #untile .untile-next {
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        opacity: 0.8;
+
+
+        text-align: center; 
+        vertical-align: middle; 
+        color: white;
+        font-weight: bold;
+        font-family: tahoma; arial, helvetica, verdana;
+        font-size: 45px;
+
+        /* vertically centered, to the left */
+        top: 50%;
+        margin-top: -25px;
+        left: 0%;
+      }
+      #untile .untile-next {
+        /* and to the right */
+        left: 100%;
+        margin-left: -50px;
+      }
+
+      /* contents */
+      #untile .tile>div {
+        margin: 1%;
+        width: 98%;
+        height: 98%;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .leyenda {
+        background-color: white;
+        font-family: tahoma, arial, helvetica, verdana;
+        position: absolute;
+        top: 418px; 
+      }
+    </style>
+    <script>
+      jQuery(function($){
+        var untile = $('#untile').untile({rows: 2, onchange: function(s, i, u){$('#untile-range').val(i);u.elements.find(".leyenda").hide();s.find(".leyenda").fadeIn();}});
+      });
+    </script>
+  </head>
+  <body>
+    <p> </p> 
+    <p> </p> 
+    <p> </p> 
+    <div id="untile">
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/2b0935fde1.jpg);">
+          <div class="leyenda">
+            Aqui va contenido HTML.  Las imágenes están puestas con CSS (background-image) pero cualquier método para poner contenido es válido.
+          </div>
+      </div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/las_lenas.jpg);">
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="leyenda">Cuando se cambia de recuadro se ejecuta un callback que permite ocultar o mostrar contenido adicional, o lo que se desee hacer.</div>
+      </div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/natural_fauna.jpg);">2</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/94f69a71a5.jpg);">3</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/9eb47ec3aa.jpg);">4</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/c1e3d391df.jpg);">5</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/2b092ddabe.jpg);">6</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/16.jpg);">7</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/futbol.jpg);">8</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/d169e0404f.jpg);">9</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/products/senderismo.jpg);">10</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/5.jpg);">11</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/4.jpg);">12</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/3.jpg);">13</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/2.jpg);">14</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/1.jpg);">15</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/6.jpg);">16</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/12.jpg);">17</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/13.jpg);">18</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/14.jpg);">19</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/15.jpg);">20</div></div>
+      <div class="tile"><div style="background-image: url(http://www.argentina.travel/argentina/images/category/17.jpg);">21</div></div>
+      <div class="untile-prev" >&lt;</div>
+      <div class="untile-next">&gt;</div>
+    </div>
+    <input id="untile-range" type="range" min=0 max=21 onchange="$('#untile').untile().browseTo($(this).val());" value="0" style="width: 100%">
+    Filas: <input type="text" value="2" onchange="$('#untile').untile().rows($(this).val());">
+    <!--[if lt IE 9]> <script>$("#untile .tile > div").height("98%").width("98%");</script> <![endif]-->
+  </body>
+</html>
